@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="cn">
+	<head>
+		<meta charset="utf-8" />
+		<title>xx摄像头</title>
+	</head>
+	<body>
+		<div class="page">
+			<div id="video-tips">摄像头连接中...</div>
+			<video id="theirs" controls="controls"></video>
+		</div>
+	</body>
+</html>
+
+<style>
+
+body {
+	background-color: #3D6DF2;
+	margin-top: 15px;
+	font-family: sans-serif;
+	color: white;
+}
+
+video {
+	background: black;
+	border: 1px solid gray;
+}
+
+.page {
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	width: 500px;
+	height: 500px;
+}
+
+#theirs {
+	width: 500px;
+	height: 500px;
+}
+
+</style>
+
+<script language="javascript">
+<!--
+var cameraSn = '{{camera_sn}}';
+//alert(cameraSn);
+document.write('\<script src="../../static/webrtc/webrtc_common.js?killcache=' + Math.random() + '"\>\</script\>');
+document.write('\<script src="../../static/webrtc/client.js?killcache=' + Math.random() + '"\>\</script\>');
+//-->
+</script>

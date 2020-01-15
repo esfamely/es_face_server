@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Face API 测试 - 检测</title>
+</head>
+<body>
+	<div>
+		<input id="file" type="file" />
+	</div>
+	<div>
+		<canvas id="myCanvas"></canvas>
+	</div>
+</body>
+</html>
+
+<script language="javascript">
+<!--
+
+window.onload = () => {
+	let eleFile = document.querySelector('#file');
+	let reader = new FileReader();
+	let img = new Image();
+	// 选择的文件对象
+	var file = null;
+
+	// 缩放图片需要的canvas
+	var canvas = document.querySelector('#myCanvas');
+	var context = canvas.getContext('2d');
+
+	// base64地址图片加载完毕后
+	img.onload = function () {
+		// 最大尺寸限制
+		var toWidth = 1000;
+		var toHeight;
+		if (this.width > toWidth) {
+			toHeight = Math.round(this.height * (toWidth / this.width));
+		} else {
+			toWidth = this.width;
+			toHeight = this.height;
+		}
+
+		canvas.width = toWidth;
+		canvas.height = toHeight;
+		// 清除画布
+		context.clearRect(0, 0, toWidth, toHeight);
+		// 图片压缩
+		context.drawImage(img, 0, 0, toWidth, toHeight);
+		// canvas转为blob并上传
+		canvas.toBlob(function (blob) {
+			var formData = new FormData();
+			formData.append('image_base64', blob);
+			//formData.append('image_url', 'http://pic-bucket.ws.126.net/photo/0003/2019-04-10/ECCR5L6I00AJ0003NOS.jpg');
+			//formData.append('factor_mini', '0.52');
+
+			fetch('http://192.168.1.36:7036/face/collection/detect', {
+				method: 'POST',
+				body: formData
+			})
+			.then(res => res.json())
+			.then(
+				(result) => {
+					alert(JSON.stringify(result));
+				},
+				(error) => {
+					alert(error);
+				}
+			);
+		}, file.type || 'image/jpg');
+	};
+
+	// 文件base64化，以便获知图片原始尺寸
+	reader.onload = function(e) {
+		img.src = e.target.result;
+	};
+	eleFile.addEventListener('change', function (event) {
+		file = event.target.files[0];
+		// 选择的文件是图片
+		if (file.type.indexOf("image") == 0) {
+			reader.readAsDataURL(file);
+		}
+	});
+};
+
+//-->
+</script>

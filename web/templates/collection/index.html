@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>es_face</title>
+	</head>
+	<body>
+		<div id="status">页面加载中...</div>
+		<div id="leftDiv" style="display:none;">
+			<div id="fpsDiv" style="padding-top:30px;">当前FPS：</div>
+			<div style="padding-top:30px;">采集人：<input type="text" id="collectText" style="width:100px;"><button id="collectButton">采集</button>
+			</div>
+			<div style="padding-top:30px;"><button id="predictButton">识别</button></div>
+			<div style="padding-top:30px;"><button id="collectXButton">连续采集</button></div>
+			<div style="padding-top:30px;"><button id="collectPButton" style="display:none;">暂停采集</button></div>
+			<div id="collectDiv" style="padding-top:30px;"></div>
+		</div>
+		<div id="frameDiv" style="display:none;">
+			<iframe id="cameraIframe" name="cameraFrame" frameborder="1" scrolling="no" width="870" height="630" src="face/camera"></iframe>
+		</div>
+	</body>
+</html>
+
+<style>
+body {
+	background-color: #C8EECD;
+}
+div {
+	float: left;
+}
+</style>
+
+<script language="javascript">
+<!--
+document.write('\<script src="static/collection/index.js?killcache=' + Math.random() + '"\>\</script\>');
+//-->
+</script>

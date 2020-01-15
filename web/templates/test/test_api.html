@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Face API 测试</title>
+</head>
+<body>
+	<div>
+		<input type="text" id="url_text" style="width:500px;" value="https://192.168.1.36:7036/face">
+	</div>
+	<div>
+		<textarea id="parameter_textarea" rows="5" cols="50"></textarea>
+	</div>
+	<div>
+		<textarea id="result_textarea" rows="10" cols="100"></textarea>
+	</div>
+	<div>
+		<input type="button" value="提交" onclick="summit();">
+	</div>
+</body>
+</html>
+
+<script language="javascript">
+<!--
+
+function summit() {
+	let url_text = document.querySelector('#url_text');
+	let parameter_textarea = document.querySelector('#parameter_textarea');
+	let result_textarea = document.querySelector('#result_textarea');
+
+	let formData = new FormData();
+	let ptss = parameter_textarea.value.split(',');
+	for (let m=0; m<ptss.length; m++) {
+		let pts = ptss[m].split('=');
+		formData.append(pts[0], pts[1]);
+	}
+
+	let url = url_text.value;
+	fetch(url, {
+		method: 'POST',
+		body: formData
+	})
+	.then(res => res.json())
+	.then(
+		(result) => {
+			result_textarea.value = JSON.stringify(result);
+		},
+		(error) => {
+			alert(error);
+		}
+	);
+}
+
+//-->
+</script>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../cv_aaa/.idea/cv_aaa.iml" filepath="$PROJECT_DIR$/../cv_aaa/.idea/cv_aaa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../es_face_client/.idea/es_face_client.iml" filepath="$PROJECT_DIR$/../es_face_client/.idea/es_face_client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/es_face_server.iml" filepath="$PROJECT_DIR$/.idea/es_face_server.iml" />
+    </modules>
+  </component>
+</project>
